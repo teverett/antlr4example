@@ -6,8 +6,9 @@
 	<name>khubla.com Antlr4 Example</name>
 	<version>1.0-SNAPSHOT</version>
 	<properties>
-		<antlr.version>4.7</antlr.version>
+		<antlr.version>4.7.1</antlr.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<target.jvm>1.7</target.jvm>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -52,8 +53,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${target.jvm}</source>
+					<target>${target.jvm}</target>
 				</configuration>
 			</plugin>
 		</plugins>
