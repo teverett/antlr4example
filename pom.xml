@@ -57,7 +57,24 @@
 					<target>${target.jvm}</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>wagon-maven-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>download-single</goal>
+						</goals>
+						<configuration>
+							<url>https://raw.githubusercontent.com/antlr/grammars-v4/master/arithmetic/</url>
+							<fromFile>arithmetic.g4</fromFile>
+							<toFile>src/main/antlr4/com/khubla/antlr4example/arithmetic.g4</toFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>
