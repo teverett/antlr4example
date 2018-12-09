@@ -9,6 +9,8 @@
 		<antlr.version>4.7.1</antlr.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<target.jvm>1.7</target.jvm>
+		<antlr.grammar.name>arithmetic</antlr.grammar.name>
+		<antlr.grammar.version>1.0-SNAPSHOT</antlr.grammar.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -16,23 +18,38 @@
 			<artifactId>antlr4-runtime</artifactId>
 			<version>${antlr.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.antlr.grammars</groupId>
+			<artifactId>${antlr.grammar.name}</artifactId>
+			<version>${antlr.grammar.version}</version>
+			<type>zip</type>
+			<classifier>grammars</classifier>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>com.googlecode.maven-download-plugin</groupId>
-				<artifactId>download-maven-plugin</artifactId>
-				<version>1.4.0</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
+						<id>unpack grammars</id>
 						<phase>generate-sources</phase>
 						<goals>
-							<goal>wget</goal>
+							<goal>unpack-dependencies</goal>
 						</goals>
 						<configuration>
-							<url>https://raw.githubusercontent.com/antlr/grammars-v4/master/arithmetic/arithmetic.g4</url>
-							<outputFileName>arithmetic.g4</outputFileName>
-							<outputDirectory>src/main/antlr4/com/khubla/antlr4example/</outputDirectory>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.antlr.grammars</groupId>
+									<artifactId>${antlr.grammar.name}</artifactId>
+									<version>${antlr.grammar.version}</version>
+									<type>zip</type>
+									<classifier>grammars</classifier>
+									<overWrite>true</overWrite>
+									<outputDirectory>src/main/antlr4/com/khubla/antlr4example/</outputDirectory>
+								</artifactItem>
+							</artifactItems>
 						</configuration>
 					</execution>
 				</executions>
@@ -42,7 +59,7 @@
 				<artifactId>antlr4-maven-plugin</artifactId>
 				<version>${antlr.version}</version>
 				<configuration>
-					<grammars>arithmetic.g4</grammars>
+					<grammars>${antlr.grammar.name}.g4</grammars>
 					<visitor>true</visitor>
 					<listener>true</listener>
 				</configuration>
@@ -75,7 +92,6 @@
 					<target>${target.jvm}</target>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
 </project>
