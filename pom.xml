@@ -11,6 +11,7 @@
 		<target.jvm>1.7</target.jvm>
 		<antlr.grammar.name>arithmetic</antlr.grammar.name>
 		<antlr.grammar.version>1.0-SNAPSHOT</antlr.grammar.version>
+		<antlr.grammar.targetdir>${basedir}/target/antlr4/grammars</antlr.grammar.targetdir>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -36,7 +37,7 @@
 						<id>unpack grammars</id>
 						<phase>generate-sources</phase>
 						<goals>
-							<goal>unpack-dependencies</goal>
+							<goal>unpack</goal>
 						</goals>
 						<configuration>
 							<artifactItems>
@@ -47,9 +48,31 @@
 									<type>zip</type>
 									<classifier>grammars</classifier>
 									<overWrite>true</overWrite>
-									<outputDirectory>src/main/antlr4/com/khubla/antlr4example/</outputDirectory>
+									<outputDirectory>${antlr.grammar.targetdir}</outputDirectory>
 								</artifactItem>
 							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/src/main/antlr4</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${antlr.grammar.targetdir}</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
 						</configuration>
 					</execution>
 				</executions>
