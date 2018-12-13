@@ -3,12 +3,13 @@ package com.khubla.antlr4example;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.antlr.arithmetic.arithmeticLexer;
+import org.antlr.arithmetic.arithmeticParser;
+import org.antlr.arithmetic.arithmeticParser.EquationContext;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.TokenStream;
-
-import com.khubla.antlr4example.arithmeticParser.EquationContext;
 
 /**
  * @author Tom Everett
@@ -36,6 +37,7 @@ class Main {
          /*
           * get the top node of the AST. This corresponds to the topmost rule of equation.q4, "equation"
           */
+         @SuppressWarnings("unused")
          EquationContext equationContext = parser.equation();
       } catch (IOException e) {
          e.printStackTrace();

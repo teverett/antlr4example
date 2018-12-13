@@ -6,3 +6,4 @@
 /**/target
 /**/test-output
 dependency-reduced-pom.xml
+/src/main/antlr4/org/antlr/arithmetic/arithmetic.g4

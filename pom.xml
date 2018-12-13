@@ -9,6 +9,7 @@
 		<antlr.version>4.7.1</antlr.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<target.jvm>1.7</target.jvm>
+		<!-- change these parameters to use a different grammar -->
 		<antlr.grammar.name>arithmetic</antlr.grammar.name>
 		<antlr.grammar.version>1.0-SNAPSHOT</antlr.grammar.version>
 		<antlr.grammar.targetdir>${basedir}/target/antlr4/grammars</antlr.grammar.targetdir>
@@ -19,6 +20,7 @@
 			<artifactId>antlr4-runtime</artifactId>
 			<version>${antlr.version}</version>
 		</dependency>
+		<!-- import the grammar file as a maven dep -->
 		<dependency>
 			<groupId>org.antlr.grammars</groupId>
 			<artifactId>${antlr.grammar.name}</artifactId>
@@ -66,10 +68,10 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${basedir}/src/main/antlr4</outputDirectory>
+							<outputDirectory>${basedir}/src/main/antlr4/org/antlr/${antlr.grammar.name}</outputDirectory>
 							<resources>
 								<resource>
-									<directory>${antlr.grammar.targetdir}</directory>
+									<directory>${antlr.grammar.targetdir}/${antlr.grammar.name}-${antlr.grammar.version}</directory>
 									<filtering>true</filtering>
 								</resource>
 							</resources>
