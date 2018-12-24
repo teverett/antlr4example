@@ -8,7 +8,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.TokenStream;
 
-import com.khubla.antlr4example.arithmeticParser.EquationContext;
+import com.khubla.antlr4example.Cobol85Parser.StartRuleContext;
 
 /**
  * @author Tom Everett
@@ -20,11 +20,11 @@ class Main {
          /*
           * get the input file as an InputStream
           */
-         InputStream inputStream = Main.class.getResourceAsStream("/pyth.txt");
+         InputStream inputStream = Main.class.getResourceAsStream("/example1.txt");
          /*
           * make Lexer
           */
-         Lexer lexer = new arithmeticLexer(CharStreams.fromStream(inputStream));
+         Lexer lexer = new Cobol85Lexer(CharStreams.fromStream(inputStream));
          /*
           * get a TokenStream on the Lexer
           */
@@ -32,11 +32,12 @@ class Main {
          /*
           * make a Parser on the token stream
           */
-         arithmeticParser parser = new arithmeticParser(tokenStream);
+         Cobol85Parser parser = new Cobol85Parser(tokenStream);
          /*
           * get the top node of the AST. This corresponds to the topmost rule of equation.q4, "equation"
           */
-         EquationContext equationContext = parser.equation();
+         @SuppressWarnings("unused")
+         StartRuleContext startRuleContext = parser.startRule();
       } catch (IOException e) {
          e.printStackTrace();
       }
