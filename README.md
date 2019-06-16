@@ -1,4 +1,4 @@
-[![Travis](https://travis-ci.org/teverett/antlr4example.svg?branch=master)](https://travis-ci.org/teverett/antlr4example.svg?branch=master)
+[![Travis](https://travis-ci.org/teverett/antlr4example.svg?branch=master)](https://travis-ci.org/teverett/antlr4example)
 
 # antlr4example
 
