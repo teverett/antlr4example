@@ -8,7 +8,7 @@
 	<properties>
 		<antlr.version>4.13.1</antlr.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<target.jvm>1.8</target.jvm>
+		<target.jvm>21</target.jvm>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -42,7 +42,6 @@
 				<artifactId>antlr4-maven-plugin</artifactId>
 				<version>${antlr.version}</version>
 				<configuration>
-					<grammars>arithmetic.g4</grammars>
 					<visitor>true</visitor>
 					<listener>true</listener>
 				</configuration>
